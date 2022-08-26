@@ -10,14 +10,16 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 st.set_page_config(
     page_title="VIKAS Dashboard",
-    page_icon="✅",
+    page_icon="Vikas Logo Main.png",
     layout="wide",
 )
 
-landmarks = ['kc', 'tiger circle', 'coin circle', 'malpe', 'hoode', 'kapu', 'nit surathkal', 'kundapura', 'karkala']
+landmarks = ['KC\t', 'Tiger Circle\t', 'Coin Circle\t', 'Malpe\t', 'Hoode\t', 'Kapu\t', 'NIT Surathkal\t', 'Kundapura\t', 'Karkala\t']
 
 # dashboard title
-st.title("VIKAS Dashboard")
+logo, title = st.columns([1,9])
+logo.image('Vikas Logo Main.png', width=80)
+title.title("VIKAS Dashboard")
 
 # creating a single-element container
 placeholder = st.empty()
@@ -29,11 +31,15 @@ classes = ['Caution and Advice\t', 'Displaced People and Evacuations\t',
                 'Sympathy and Emotional Support\t']
 
 fig = px.bar(x=[3, 3, 6, 5, 12, 17, 2, 1, 1], y=classes, orientation='h', color_discrete_sequence=["#94d2bd"])
-fig.update_layout(title_text='<b>Resources Needed</b>', height=600, width=1200, title_x=0.6, title_y=1, title={'font': {'size': 25}})
+fig.update_layout(title_text='<b>Resources Needed</b>', height=600, width=1200, 
+                    title_x=0.6, title_y=1, title={'font': {'size': 25}},
+                    xaxis_title=None, yaxis_title=None)
 st.write(fig)
 
 fig = px.bar(x=[17, 12, 6, 5, 3, 3, 2, 1, 1], y=landmarks, orientation='h', color_discrete_sequence=["#94d2bd"])
-fig.update_layout(title_text='<b>Location Analysis</b>', height=600, width=1200, title_x=0.6, title_y=1, title={'font': {'size': 25}})
+fig.update_layout(title_text='<b>Location Analysis</b>', height=600, width=1200, 
+                    title_x=0.6, title_y=1, title={'font': {'size': 25}},
+                    xaxis_title=None, yaxis_title=None)
 st.write(fig)
 
 st.markdown("### Data")
@@ -74,13 +80,17 @@ for seconds in range(72):
         fig_col1, fig_col2 = st.columns(2)
         with fig_col1:
             fig = px.bar(x=['Mild', 'Severe'], y=[20, 9], color=['Mild', 'Severe'], color_discrete_sequence=["#94d2bd", "#0a9396"])
-            fig.update_layout(title_text='<b>Severity</b>', title_x=0.5, title_y=1, title={'font': {'size': 25}}, showlegend=False)
+            fig.update_layout(title_text='<b>Severity</b>', title_x=0.5, title_y=1, 
+                                title={'font': {'size': 25}}, showlegend=False,
+                                xaxis_title=None, yaxis_title=None)
             fig.update_traces(width=0.5)
             st.write(fig)
             
         with fig_col2:
             fig2 = px.bar(x=['Flood', 'Structural'], y=[7, 22], color=['Flood', 'Structural'], color_discrete_sequence=["#94d2bd", "#0a9396"])
-            fig2.update_layout(title_text='<b>Type of Disaster</b>', title_x=0.5, title_y=1, title={'font': {'size': 25}}, showlegend=False)
+            fig2.update_layout(title_text='<b>Type of Disaster</b>', title_x=0.5, title_y=1, 
+                                title={'font': {'size': 25}}, showlegend=False,
+                                xaxis_title=None, yaxis_title=None)
             fig2.update_traces(width=0.5)
             st.write(fig2)
 
